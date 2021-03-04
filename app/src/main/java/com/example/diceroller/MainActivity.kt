@@ -1,5 +1,6 @@
 package com.example.diceroller
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
     val mHistory = mutableListOf<Pair<Int, Int>>()
+    val hi = "Hello World"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,9 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onClickClear(v: View){
-        mHistory.clear()
-        updateHistory()
+        val i = Intent(this, HistoryActivity::class.java)
+        intent.putExtra("HISTORY_LIST", hi)
+        startActivity(i)
     }
+
 }
