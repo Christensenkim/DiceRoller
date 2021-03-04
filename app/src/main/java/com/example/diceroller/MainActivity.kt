@@ -7,7 +7,10 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
+const val HISTORY_LIST = "com.example.diceroller.MESSAGE"
+
 class MainActivity : AppCompatActivity() {
+
 
     val mGenerator = Random()
 
