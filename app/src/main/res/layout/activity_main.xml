@@ -44,8 +44,13 @@
             android:adjustViewBounds="true"
             android:src="@drawable/dice1"/>
     </LinearLayout>
-
-    <Button
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/btnAndSpinner"
+        android:layout_below="@id/diceBoard"
+        android:layout_centerHorizontal="true">
+        <Button
         android:id="@+id/rollButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,11 +59,17 @@
         android:layout_centerHorizontal="true"
         android:onClick="onClickRoll"
         />
+        <Spinner
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerList"
+            android:entries="@array/numbers"></Spinner>
+    </LinearLayout>
     <TextView
         android:id="@+id/tvHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rollButton"
+        android:layout_below="@id/btnAndSpinner"
         android:text="This is history"
         android:layout_centerHorizontal="true"/>
     <Button
