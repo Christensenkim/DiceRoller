@@ -8,23 +8,19 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 const val HISTORY_LIST = "com.example.diceroller.MESSAGE"
 
 class MainActivity : AppCompatActivity() {
 
-
-    val mGenerator = Random()
-
     val diceIds = arrayOf(0, R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
-    val mHistory = mutableListOf<Pair<Int, Int>>()
+    val diceResults: MutableList<Int> = ArrayList()
+    val diceHistory: MutableList<MutableList<Int>> = ArrayList()
 
     val hi = "Hello World"
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,37 +36,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickRoll(v: View){
-        /*
-        val d1 = mGenerator.nextInt(6) + 1
-        val d2 = mGenerator.nextInt(6) + 1
-
-        imgDice1.setImageResource(diceIds[d1])
-        imgDice2.setImageResource(diceIds[d2])
-
-        if (mHistory.size >= 5)
-            mHistory.removeAt(0)
-        mHistory.add(Pair(d1, d2))
-        updateHistory()*/
-
-        val spinner: Spinner = findViewById<Spinner>(R.id.planets_spinner)
+        val spinner: Spinner = findViewById(R.id.planets_spinner)
         var number = 0
+        diceResults.clear()
         for (i in 1..spinner.selectedItem as Int){
             number = Dice(6).roll()
-            println(number)
+            changeDiceImage(i, number)
         }
-        imgDice1.setImageResource(diceIds[number])
-
+        diceHistory.add(diceResults)
     }
 
-    private fun updateHistory(){
-        var s = ""
-        mHistory.forEach{ p -> val e1 = p.first; val e2 = p.second
-                                    s += "$e1 - $e2\n"}
+    private fun changeDiceImage(i: Int, number: Int) {
+        if (i == 1) {
+            imgDice1.setImageResource(diceIds[number])
+            diceResults.add(number)
+        }
+        if (i == 2) {
+            imgDice2.setImageResource(diceIds[number])
+            diceResults.add(number)
+        }
+        if (i == 3) {
+            imgDice3.setImageResource(diceIds[number])
+            diceResults.add(number)
+        }
+        if (i == 4) {
+            imgDice4.setImageResource(diceIds[number])
+            diceResults.add(number)
+        }
+        if (i == 5) {
+            imgDice5.setImageResource(diceIds[number])
+            diceResults.add(number)
+        }
+        if (i == 6) {
+            imgDice6.setImageResource(diceIds[number])
+            diceResults.add(number)
+        }
     }
 
-
-
-    fun onClickClear(v: View){
+    fun onClickHistory(v: View){
         val i = Intent(this, HistoryActivity::class.java)
         intent.putExtra("HISTORY_LIST", hi)
         startActivity(i)

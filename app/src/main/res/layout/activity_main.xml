@@ -33,13 +33,13 @@
             android:layout_centerHorizontal="true">
                 <ImageView
                     android:id="@+id/imgDice1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:maxWidth="120dp"
                     android:scaleType="center"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/dice1"/>
+                    android:src="@drawable/dice1" />
                 <ImageView
                     android:id="@+id/imgDice2"
                     android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                     android:maxWidth="120dp"
                     android:scaleType="center"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/dice1"/>
+                    android:src="@drawable/dice1" />
                 <ImageView
                     android:id="@+id/imgDice3"
                     android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
                     android:maxWidth="120dp"
                     android:scaleType="center"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/dice1"/>
+                    android:src="@drawable/dice1" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/diceRow2"
@@ -74,7 +74,7 @@
                 android:maxWidth="120dp"
                 android:scaleType="center"
                 android:adjustViewBounds="true"
-                android:src="@drawable/dice1"/>
+                android:src="@drawable/dice1" />
             <ImageView
                 android:id="@+id/imgDice5"
                 android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                 android:maxWidth="120dp"
                 android:scaleType="center"
                 android:adjustViewBounds="true"
-                android:src="@drawable/dice1"/>
+                android:src="@drawable/dice1" />
             <ImageView
                 android:id="@+id/imgDice6"
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                 android:maxWidth="120dp"
                 android:scaleType="center"
                 android:adjustViewBounds="true"
-                android:src="@drawable/dice1"/>
+                android:src="@drawable/dice1" />
         </LinearLayout>
     </LinearLayout>
 
@@ -117,7 +117,7 @@
         android:text="History"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickClear"/>
+        android:onClick="onClickHistory"/>
 
 
 </RelativeLayout>
