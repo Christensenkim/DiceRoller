@@ -54,12 +54,11 @@
         android:layout_centerHorizontal="true"
         android:onClick="onClickRoll"
         />
-    <TextView
-        android:id="@+id/tvHistory"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rollButton"
-        android:text="This is history"
         android:layout_centerHorizontal="true"/>
     <Button
         android:layout_width="wrap_content"
