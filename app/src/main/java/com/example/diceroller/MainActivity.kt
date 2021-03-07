@@ -1,13 +1,15 @@
 package com.example.diceroller
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
+import java.time.LocalTime
 import kotlin.collections.ArrayList
 
 const val HISTORY_LIST = "com.example.diceroller.MESSAGE"
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
     val diceResults: MutableList<Int> = ArrayList()
-    val diceHistory: MutableList<MutableList<Int>> = ArrayList()
+    val diceHistory = mutableListOf<Pair<String, MutableList<Int>>>()
 
     val hi = "Hello World"
 
@@ -35,15 +37,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun onClickRoll(v: View){
+
         val spinner: Spinner = findViewById(R.id.planets_spinner)
         var number = 0
-        diceResults.clear()
+
         for (i in 1..spinner.selectedItem as Int){
             number = Dice(6).roll()
             changeDiceImage(i, number)
         }
-        diceHistory.add(diceResults)
+        var time = LocalTime.now().toString()
+
+        diceHistory.add(Pair(time, diceResults))
+        println(diceHistory.toString())
+        diceResults.clear()
     }
 
     private fun changeDiceImage(i: Int, number: Int) {
