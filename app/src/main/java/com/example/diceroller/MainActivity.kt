@@ -10,7 +10,7 @@ import android.widget.Spinner
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalTime
-import kotlin.collections.ArrayList
+import java.util.*
 
 const val HISTORY_LIST = "com.example.diceroller.MESSAGE"
 
@@ -19,10 +19,9 @@ class MainActivity : AppCompatActivity() {
     val diceIds = arrayOf(0, R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
-    val diceResults: MutableList<Int> = ArrayList()
-    val diceHistory = mutableListOf<String>()
+    val diceResults: ArrayList<Int> = ArrayList()
+    val diceHistory = ArrayList<String>()
 
-    val hi = "Hello World"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onClickHistory(v: View){
         val i = Intent(this, HistoryActivity::class.java)
-        intent.putExtra("List", diceHistory.toString())
+        i.putStringArrayListExtra("List", diceHistory)
         startActivity(i)
     }
 

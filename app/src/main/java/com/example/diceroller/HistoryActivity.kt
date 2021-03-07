@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import kotlinx.android.synthetic.main.list_history.*
+import kotlin.collections.ArrayList
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -12,9 +12,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_history)
 
-        var diceHistory = ArrayList<String>()
-
-        diceHistory = intent.getStringArrayListExtra("List") as ArrayList<String>
+        var diceHistory = intent.getStringArrayListExtra("List") as ArrayList<String>
 
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, diceHistory)
 
