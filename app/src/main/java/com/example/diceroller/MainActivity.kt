@@ -20,8 +20,7 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
     val diceResults: ArrayList<Int> = ArrayList()
-    val diceHistory = ArrayList<String>()
-
+    var diceHistory = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
