@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
     val diceResults: MutableList<Int> = ArrayList()
-    val diceHistory = mutableListOf<Pair<String, String>>()
+    val diceHistory = mutableListOf<String>()
 
     val hi = "Hello World"
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
         var time = LocalTime.now().toString()
 
-        diceHistory.add(Pair(time, diceResults.toString()))
+        diceHistory.add(time + diceResults.toString())
         println(diceHistory.toString())
         diceResults.clear()
     }
