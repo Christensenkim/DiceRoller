@@ -21,28 +21,79 @@
         android:id="@+id/diceBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/tvHeader"
         android:background="@color/diceboard">
-        <ImageView
-            android:id="@+id/imgDice1"
+        <LinearLayout
+            android:id="@+id/diceRow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:maxWidth="150dp"
-            android:scaleType="center"
-            android:adjustViewBounds="true"
-            android:src="@drawable/dice1"/>
-        <ImageView
-            android:id="@+id/imgDice2"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+                <ImageView
+                    android:id="@+id/imgDice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:maxWidth="120dp"
+                    android:scaleType="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/dice1"/>
+                <ImageView
+                    android:id="@+id/imgDice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:maxWidth="120dp"
+                    android:scaleType="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/dice1"/>
+                <ImageView
+                    android:id="@+id/imgDice3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:maxWidth="120dp"
+                    android:scaleType="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/dice1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/diceRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:maxWidth="150dp"
-            android:scaleType="center"
-            android:adjustViewBounds="true"
-            android:src="@drawable/dice1"/>
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/diceRow1">
+            <ImageView
+                android:id="@+id/imgDice4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:maxWidth="120dp"
+                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/dice1"/>
+            <ImageView
+                android:id="@+id/imgDice5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:maxWidth="120dp"
+                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/dice1"/>
+            <ImageView
+                android:id="@+id/imgDice6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:maxWidth="120dp"
+                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/dice1"/>
+        </LinearLayout>
     </LinearLayout>
 
     <Button
