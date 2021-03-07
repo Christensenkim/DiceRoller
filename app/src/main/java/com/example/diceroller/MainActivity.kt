@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.dice4, R.drawable.dice5, R.drawable.dice6 )
 
     val diceResults: MutableList<Int> = ArrayList()
-    val diceHistory = mutableListOf<Pair<String, MutableList<Int>>>()
+    val diceHistory = mutableListOf<Pair<String, String>>()
 
     val hi = "Hello World"
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
         var time = LocalTime.now().toString()
 
-        diceHistory.add(Pair(time, diceResults))
+        diceHistory.add(Pair(time, diceResults.toString()))
         println(diceHistory.toString())
         diceResults.clear()
     }
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onClickHistory(v: View){
         val i = Intent(this, HistoryActivity::class.java)
-        intent.putExtra("HISTORY_LIST", hi)
+        intent.putExtra("List", diceHistory.toString())
         startActivity(i)
     }
 
