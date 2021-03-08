@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="Back"
             android:layout_alignParentLeft="true"
+            android:onClick="onCLickBack"
             >
 
         </Button>
@@ -53,6 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Clear"
             android:layout_alignParentRight="true"
+            android:onClick="onClickClearAndReturn"
             >
 
         </Button>
