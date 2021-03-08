@@ -49,13 +49,13 @@ class MainActivity : AppCompatActivity() {
         {
             val history = savedInstanceState.getStringArrayList("historyListRolls") as ArrayList<String>
             history.forEach { p -> mHistory.add(p) }
-            val historyRoll = savedInstanceState.getIntegerArrayList("historyRecentRoll") as ArrayList<Int>
+            /*val historyRoll = savedInstanceState.getIntegerArrayList("historyRecentRoll") as ArrayList<Int>
             historyRoll.forEach { i -> recentRoll.add(i) }
-            if (recentRoll.size > 0) {
+
                 for (i in 0..recentRoll.size) {
                     changeDiceImage(i, recentRoll[i])
                 }
-            }
+            */
         }
     }
 

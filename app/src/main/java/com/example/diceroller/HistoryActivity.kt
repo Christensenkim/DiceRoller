@@ -15,6 +15,7 @@ class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_history)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         diceHistory = intent.getStringArrayListExtra("List") as ArrayList<String>
 
@@ -26,11 +27,6 @@ class HistoryActivity : AppCompatActivity() {
             listView.adapter = adapter
         }
     }
-
-    fun onCLickBack(view: View) {
-        //todo
-    }
-
 
     fun onClickClearAndReturn(view: View) {
         val i = Intent(this, MainActivity::class.java)
