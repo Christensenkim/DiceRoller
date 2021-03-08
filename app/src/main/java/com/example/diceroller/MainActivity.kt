@@ -1,16 +1,20 @@
 package com.example.diceroller
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalTime
 import java.util.*
+import kotlin.collections.ArrayList
 
 const val HISTORY_LIST = "com.example.diceroller.MESSAGE"
 
@@ -21,11 +25,17 @@ class MainActivity : AppCompatActivity() {
 
     val diceResults: ArrayList<Int> = ArrayList()
     val diceHistory = ArrayList<String>()
+    private val mHistory = ArrayList<String>()
+    val recentRoll = ArrayList<Int>()
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val orientation = this.getResources().getConfiguration().orientation
+        val message = if (orientation == Configuration.ORIENTATION_PORTRAIT) "Portrait" else "Landscape"
+        Toast.makeText(this,message, Toast.LENGTH_LONG).show()
 
         val dices = resources.getIntArray(R.array.numberOfDices)
         val spinner: Spinner = findViewById<Spinner>(R.id.planets_spinner)
@@ -34,6 +44,28 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_item, dices.toList())
             spinner.adapter = adapter
         }
+
+        if (savedInstanceState != null)
+        {
+            val history = savedInstanceState.getStringArrayList("historyListRolls") as ArrayList<String>
+            history.forEach { p -> mHistory.add(p) }
+            val historyRoll = savedInstanceState.getIntegerArrayList("historyRecentRoll") as ArrayList<Int>
+            historyRoll.forEach { i -> recentRoll.add(i) }
+            if (recentRoll.size > 0) {
+                for (i in 0..recentRoll.size) {
+                    changeDiceImage(i, recentRoll[i])
+                }
+            }
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun updateHistory() {
+        var time = LocalTime.now().toString()
+        diceHistory.add(time + diceResults.toString())
+        println(diceHistory.toString())
+        diceResults.clear()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -45,12 +77,9 @@ class MainActivity : AppCompatActivity() {
         for (i in 1..spinner.selectedItem as Int){
             number = Dice(6).roll()
             changeDiceImage(i, number)
+            recentRoll.add(number)
         }
-        var time = LocalTime.now().toString()
-
-        diceHistory.add(time + diceResults.toString())
-        println(diceHistory.toString())
-        diceResults.clear()
+        updateHistory()
     }
 
     private fun changeDiceImage(i: Int, number: Int) {
@@ -86,6 +115,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(i)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putStringArrayList("historyListRolls", mHistory)
+        outState.putIntegerArrayList("historyRecentRoll", recentRoll)
+        super.onSaveInstanceState(outState)
+    }
 }
 
 class Dice(val numSides: Int) {
